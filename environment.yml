@@ -1,0 +1,21 @@
+name: ssl-watermarking-attacks
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - pip=23.3.1=py38h06a4308_0
+  - python=3.8.18=h955ad1f_0
+  - wheel=0.41.2=py38h06a4308_0
+  - pip:
+    - huggingface-hub==0.20.3
+    - numpy==1.24.4
+    - omegaconf==2.3.0
+    - opencv-python==4.9.0.80
+    - pandas==2.0.3
+    - pillow==10.2.0
+    - scikit-image==0.21.0
+    - scipy==1.10.1
+    - timm==0.9.12
+    - torch==2.2.0
+    - torchvision==0.17.0
+    - tqdm==4.66.1
