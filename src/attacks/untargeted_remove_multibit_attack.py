@@ -130,8 +130,14 @@ class UntargetedRemoveMultibitAttack(BaseMultibitAttack):
             img_wm, img_removed, msg, carrier
         )
 
+        # step 6: compare embedding
+        emb = self.extract_emb(img)
+        emb_wm = self.extract_emb(img_wm)
         emb_removed = self.extract_emb(img_removed)
-        cosine_removed = (emb @ emb_removed.T).item()
+
+        cosine_orig_wm = torch.abs(emb @ emb_wm.T).item()
+        cosine_orig_removed = torch.abs(emb @ emb_removed.T).item()
+        cosine_wm_removed = torch.abs(emb_wm @ emb_removed.T).item()
 
         return {
             "img_wm": img_wm,
@@ -141,6 +147,8 @@ class UntargetedRemoveMultibitAttack(BaseMultibitAttack):
             "eval_orig": eval_orig,
             "eval_wm": eval_wm,
             "eval_removed": eval_removed,
+            "cosine_wm_orig": cosine_orig_wm,
+            "cosine_orig_removed": cosine_orig_removed,
+            "cosine_wm_removed": cosine_wm_removed,
             "logs": logs,
-            "cosine_removed": cosine_removed,
         }

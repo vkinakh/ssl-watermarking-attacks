@@ -107,6 +107,17 @@ class UntargetedRemoveObitAttack(Base0BitAttack):
             img_wm, img_wm_removed, carrier
         )
 
+        # step 6: compare embedding
+        emb = self.extract_emb(img)
+        emb_wm = self.extract_emb(img_wm)
+        emb_removed = self.extract_emb(img_wm_removed)
+
+        cosine_wm_orig = torch.abs(emb @ emb_wm.T).item()
+        cosine_orig_removed = torch.abs(emb @ emb_removed.T).item()
+        cosine_wm_removed = torch.abs(emb_wm @ emb_removed.T).item()
+        cosine_carrier_wm = torch.abs(carrier @ emb_wm.T).item()
+        cosine_carrier_removed = torch.abs(carrier @ emb_removed.T).item()
+
         return {
             "img_wm": img_wm,
             "img_removed": img_wm_removed,
@@ -115,5 +126,10 @@ class UntargetedRemoveObitAttack(Base0BitAttack):
             "eval_wm": eval_wm,
             "psnr_wm_removed": psnr_wm_removed,
             "eval_removed": eval_removed,
+            "cosine_wm_orig": cosine_wm_orig,
+            "cosine_orig_removed": cosine_orig_removed,
+            "cosine_wm_removed": cosine_wm_removed,
+            "cosine_carrier_wm": cosine_carrier_wm,
+            "cosine_carrier_removed": cosine_carrier_removed,
             "logs": logs,
         }
