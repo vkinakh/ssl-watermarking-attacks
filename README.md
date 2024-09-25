@@ -4,7 +4,14 @@ This repository contains the official implementation of the paper [**Evaluation 
 
 # Abstract
 
-![Watermarking scheme](figures/scheme.png)
+<div style="text-align: center;">
+<img src="./figures/scheme.png" alt="Watermarking scheme" width="50%"/>
+<figcaption>
+Generalized diagram explaining the proposed (a) copy and (b) untargted and targeted removal attacks (on the example of 
+zero-bit watermarking). The secret carrier and the decision region (show in gray) are unknown for the attacker.
+</figcaption>
+</div>
+
 
 The vast amounts of digital content captured from the real world or AI-generated media necessitate methods for copyright protection, traceability, or data provenance verification. Digital watermarking serves as a crucial approach to address these challenges. Its evolution spans three generations: handcrafted methods, autoencoder-based schemes, and methods based on foundation models. While the robustness of these systems is well-documented, the security against adversarial attacks remains underexplored. This paper evaluates the security of foundation models' latent space digital watermarking systems that utilize adversarial embedding techniques. A series of experiments investigate the security dimensions under copy and removal attacks, providing empirical insights into these systems' vulnerabilities.
 
@@ -80,6 +87,13 @@ python run_attacks.py \
        --use_cosine_sim                               # copy attack works the best with cosine similarity loss
 ```
 
+<div style="text-align: center;">
+<img src="./figures/fig_copy_0bit_attack.png" alt="0-bit copy" width="50%"/>
+<figcaption>
+Probability of false acceptance for zero-bit watermarking under copy attack.
+</figcaption>
+</div>
+
 ### Multibit
 
 Run multibit copy attack:
@@ -100,6 +114,13 @@ python run_attacks.py \
        --path_outputs=/PATH/TO/OUTPUT.csv \           # output dataframe with results, should be csv file
        --use_cosine_sim                               # copy attack works the best with cosine similarity loss
 ```
+
+<div style="text-align: center;">
+<img src="./figures/fig_copy_multibit_attack.png" alt="multibit copy" width="50%"/>
+<figcaption>
+Bit Error Rate (BER) for multi-bit watermarking under the copy attack.
+</figcaption>
+</div>
 
 ## Removal attacks
 
@@ -256,6 +277,19 @@ python run_attacks.py \
        --path_outputs=/PATH/TO/OUTPUT.csv             # output dataframe with results, should be csv file
 ```
 
+<div style="text-align: center;">
+<img src="./figures/fig_remove_0bit.png" alt="0-bit removal" width="50%"/>
+<figcaption>
+Probability of miss for zero-bit watermarking under targeted removal attack with different target image selection strategies.
+</figcaption>
+</div>
+
+<div style="text-align: center;">
+<img src="./figures/fig_remove_multibit.png" alt="multibit removal" width="50%"/>
+<figcaption>
+Bit Error Rate for multi-bit watermarking under targeted removal attack with different target image selection strategies</figcaption>
+</div>
+
 ## Untrageted
 
 ### 0-bit
@@ -299,6 +333,20 @@ python run_attacks.py \
        --num_bits=30 \                                # method was tested with 10, 30 and 100 bits
        --path_outputs=/PATH/TO/OUTPUT.csv             # output dataframe with results, should be csv file
 ```
+
+<div style="text-align: center;">
+<img src="./figures/fig_remove_untargeted_0bit.png" alt="0-bit untargeted removal" width="50%"/>
+<figcaption>
+Probability of miss for zero-bit watermarking under untargeted removal attack. 
+</figcaption>
+</div>
+
+<div style="text-align: center;">
+<img src="./figures/fig_remove_untargeted_multibit.png" alt="multibit untargeted removal" width="50%"/>
+<figcaption>
+{Bit Error Rate for multi-bit watermarking under untargeted removal attack.
+</figcaption>
+</div>
 
 Other parameters are
 ```bash
