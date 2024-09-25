@@ -23,15 +23,27 @@ git clone https://github.com/vkinakh/ssl-watermarking-attacks.git
 cd ssl-watermarking-attacks
 ```
 
-2. **Create a Conda Environment**
+2. Update submodules
+
+```bash
+git submodule update --init --recursive
+```
+
+3. **Create a Conda Environment**
 ```bash
 conda env create -f environment.yml
 ```
 
-4. **Activate the Environment**
+5. **Activate the Environment**
 ```bash
 conda activate ssl-watermarking-attacks
 ```
+
+6. **Download Model and Normlayer **
+
+Download model and normlayer, used in experiments
+- Model: [ResNet-50 trained with DINO](https://dl.fbaipublicfiles.com/ssl_watermarking/dino_r50_plus.pth)
+- Normalization layer [whitening](https://dl.fbaipublicfiles.com/ssl_watermarking/out2048_yfcc_orig.pth)
 
 # Attacks
 
