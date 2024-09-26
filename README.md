@@ -330,5 +330,12 @@ Other parameters are
 
 # Citation
 ```
-
+@inproceedings {kinakh2024wifs,
+    author = { Kinakh, Vitaliy and Pulfer, Brian and Belousov, Yury and Fernandez, Pierre and Furon, Teddy and Voloshynovskiy, Slava },
+    booktitle = { 16th IEEE International Workshop on Information Forensics and Security (WIFS) },
+    title = { Evaluation of Security of ML-based Watermarking: Copy and Removal Attacks },
+    address = { Roma, Italy },
+    month = { December },
+    year = { 2024 }
+}
 ```
